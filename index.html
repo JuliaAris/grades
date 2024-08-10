@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="result"></p>
+
+    <script>
+      const grades = [];
+      for (let i = 0; i < 12; i++) {
+        grades.push(Math.floor(1 + Math.random() * (100 - 1 + 1)));
+      }
+      console.log(grades);
+
+      const getAverage = (grades) => {
+        const sum = grades.reduce((acc, number) => acc + number, 0);
+        const length = grades.length;
+        return sum / length;
+      };
+
+      console.log(getAverage(grades));
+
+      const maxGrade = grades.sort(function (a, b) {
+        return b - a;
+      });
+      console.log(maxGrade[0]);
+
+      const minGrade = grades.sort(function (a, b) {
+        return a - b;
+      });
+      console.log(minGrade[0]);
+
+      const positiveGrades = grades.filter((number) => number > 60);
+      console.log(positiveGrades);
+
+      const allPositiveGrades = positiveGrades.length;
+      console.log(allPositiveGrades);
+
+      const negativeGrades = grades.filter((number) => number < 60);
+      console.log(negativeGrades);
+
+      const allNegativeGrades = negativeGrades.length;
+      console.log(allNegativeGrades);
+
+      const lettered = grades.map(function (item) {
+        if (item >= 80) {
+          return "A";
+        } else if (item <= 79 && item >= 60) {
+          return "B";
+        } else if (item <= 59 && item >= 40) {
+          return "C";
+        } else if (item <= 39 && item >= 20) {
+          return "D";
+        } else if (item < 20) {
+          return "E";
+        }
+      });
+      console.log(lettered);
+
+      const resultElement = document.getElementById("result");
+      resultElement.textContent = `${lettered}`;
+    </script>
+  </body>
+</html>
